@@ -1,12 +1,14 @@
-function ProductCard({productDetails}){
+import "./ProductCard.css"
+function ProductCard(productDetails){
 
    
     return(
 
-        <div>
-            <p>ProductName:{productDetails.productName}</p>
-            <p>Price:{productDetails.price}</p>
-            <p>{productDetails.isAvailable===true?"In Stock":"Out of Stock"}</p>
+        <div className="container">
+            <p className="title">ProductName:{productDetails.productName}</p>
+            <p className="price">Price:{productDetails.price}</p>
+            <p>{productDetails.isAvailable===true?<p className="green">"In Stock"</p>:<p className="red">"Out of Stock"</p>}</p>
+            
         </div>
 
     )
