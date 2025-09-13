@@ -1,72 +1,60 @@
-import ProductCard from "./ProductCard.jsx"
-import UserAvatar from "./UserAvatar.jsx"
-import "./App.css"
-import Greetings from "./Greetings.jsx"
-import Profile from "./Profile.jsx"
-import BlogPost from "./BlogPost.jsx"
-
+import { useState } from "react"
 function App() {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [count, setCount] = useState(0)
+  const handleEmail = (event) => {
+    setEmail(event.target.value)
+  }
+  const handlePassword = (event) => {
+    setPassword(event.target.value)
+  }
+  const [formData,setFormData] =useState({
+    email:"",
+    password:""
+})
 
- /* const productName = "Pepsi"
-  const price = 20
-  const isAvailable = true
-  const isInStock = false*/
-  /* const userName = "S.Gagana Deepthi"
-   const course = "B.Tech (CSE)"
-   const rollNo = "24VV1A0557"
-   const bloodGroup = "O+ve"
-   const dob = "04/10/2025"*/
-  /* const products = [{
-     productName: "product1",
-     price: 100,
-     isAvailable: true
-   },
-   {
-     productName: "product2",
-     price: 200,
-     isAvailable: true
-   },
-   {
-     productName: "product3",
-     price: 300,
-     isAvailable: true
-   }]*/
- /* const posts = [{
-    id:1,
-    author: "Deepthi",
-    title: "hana",
-    description: "be happy"
-  }, {
-    id:2,
-    author: "Gagana",
-    title: "love",
-    description: "life is all about love"
-  }, {
-    id:3,
-    author: "chaithra",
-    title: "success",
-    description: "about successfull people"
-  }]*/
+  const handleIncreement = () => {
 
+    setCount((prevCount) => prevCount + 1)
+    console.log(count)
+  }
+
+  const handleClick = (name) => {
+    console.log("you clicked the button")
+    alert("Hello " + name)
+  }
+  const handleChange = (event) => {
+    //console.log(event.target.name) 
+    //console.log(event.target.value) 
+    setFormData({
+      ...formData,
+      [event.target.name]:event.target.value
+
+    })
+
+  }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // console.log("you have logged in")
+    console.log(`Email:${formData.email} \n Password:${formData.password} \n you are logged in`)
+    alert(`Email:${formData.email} Password:${formData.password} \n you are logged in`)
+  }
 
   return (
 
-    <div className="main" >
-
-      {/* <p className="main"><ProductCard productName={productName} price={price} isAvailable={isInStock} /> */}
-      {/* <ProductCard productName={productName} price={price} isAvailable={isAvailable} /></p> */}
-      {/* <p className="main"> <UserAvatar username={userName} course={course} rollno={rollNo} bloodgroup={bloodGroup} dob={dob} /> */}
-      {/* <UserAvatar username={userName} course={course} rollno={rollNo} bloodgroup={bloodGroup} dob={dob} /></p> */}
-      {/* {products.map ((num)=>( */}
-        {/* // <ProductCard productName={products.productName} price={products.price} isAvailable={products.isAvailable} /> */}
-      {/* ))} */}
-      {/* {
-        posts.map((post)=>(
-          <BlogPost key={post.id} author={post.author} title={post.title} description={post. description}/>
-        ))
-      } */}
+    <div >
+      <form onSubmit={handleSubmit}>
+        <p>I am a button</p>
+        <input type="text" name="email" placeholder="Enter your email" onChange={handleChange} />
+        <input type="password" name="password" placeholder="Enter your password" onChange={handleChange} />
+        <button onClick={() => handleClick("Deepthi")}>click me</button>
+        {/* <button onClick={handleSubmit}>log in</button>  */}
+        <button type="submit">log in</button>
+      </form>
+      {/* <p>{count}</p>
+      <button onClick={handleIncreement}>Increement</button>   */}
     </div>
-
   )
 
 }
