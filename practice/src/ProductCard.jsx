@@ -1,12 +1,12 @@
-function ProductCard({productName,price,isAvailable}){
+function ProductCard({productDetails}){
 
    
     return(
 
         <div>
-            <p>ProductName:{productName}</p>
-            <p>Price:{price}</p>
-            <p>{isAvailable===true?"In Stock":"Out of Stock"}</p>
+            <p>ProductName:{productDetails.productName}</p>
+            <p>Price:{productDetails.price}</p>
+            <p>{productDetails.isAvailable===true?"In Stock":"Out of Stock"}</p>
         </div>
 
     )
